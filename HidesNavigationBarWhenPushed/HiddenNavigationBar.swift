@@ -20,7 +20,7 @@
 
 import UIKit
 
-open class NavigationBar: UINavigationBar {
+open class HiddenNavigationBar: UINavigationBar {
     
     // MARK: - Vars
     
@@ -66,8 +66,8 @@ open class NavigationBar: UINavigationBar {
         }
     }
     
-    func copyNavigationBar() -> NavigationBar {
-        let navigationBar = NavigationBar()
+    func copyNavigationBar() -> HiddenNavigationBar {
+        let navigationBar = HiddenNavigationBar()
         navigationBar.barStyle = barStyle
         navigationBar.isTranslucent = isTranslucent
         navigationBar.tintColor = tintColor

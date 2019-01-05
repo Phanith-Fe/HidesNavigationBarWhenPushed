@@ -11,9 +11,9 @@
 		F02ED5D420DE6DB5003FCF86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F02ED5D220DE6DB5003FCF86 /* Main.storyboard */; };
 		F02ED5D620DE6DB6003FCF86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F02ED5D520DE6DB6003FCF86 /* Assets.xcassets */; };
 		F02ED5D920DE6DB6003FCF86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F02ED5D720DE6DB6003FCF86 /* LaunchScreen.storyboard */; };
-		F0C1C70E20DEB9150093EAB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1C70B20DEB9150093EAB4 /* ViewController.swift */; };
-		F0C1C70F20DEB9150093EAB4 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1C70C20DEB9150093EAB4 /* NavigationBar.swift */; };
-		F0C1C71020DEB9150093EAB4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1C70D20DEB9150093EAB4 /* NavigationController.swift */; };
+		F0C1C70E20DEB9150093EAB4 /* HiddenNavigationBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1C70B20DEB9150093EAB4 /* HiddenNavigationBarViewController.swift */; };
+		F0C1C70F20DEB9150093EAB4 /* HiddenNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1C70C20DEB9150093EAB4 /* HiddenNavigationBar.swift */; };
+		F0C1C71020DEB9150093EAB4 /* HiddenNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1C70D20DEB9150093EAB4 /* HiddenNavigationController.swift */; };
 		F0EA62C120DE74480069B8F5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EA62C020DE74480069B8F5 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,9 +24,9 @@
 		F02ED5D520DE6DB6003FCF86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F02ED5D820DE6DB6003FCF86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F02ED5DA20DE6DB6003FCF86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F0C1C70B20DEB9150093EAB4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F0C1C70C20DEB9150093EAB4 /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
-		F0C1C70D20DEB9150093EAB4 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		F0C1C70B20DEB9150093EAB4 /* HiddenNavigationBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenNavigationBarViewController.swift; sourceTree = "<group>"; };
+		F0C1C70C20DEB9150093EAB4 /* HiddenNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenNavigationBar.swift; sourceTree = "<group>"; };
+		F0C1C70D20DEB9150093EAB4 /* HiddenNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenNavigationController.swift; sourceTree = "<group>"; };
 		F0EA62C020DE74480069B8F5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,9 +74,9 @@
 		F0C1C70A20DEB9150093EAB4 /* HidesNavigationBarWhenPushed */ = {
 			isa = PBXGroup;
 			children = (
-				F0C1C70B20DEB9150093EAB4 /* ViewController.swift */,
-				F0C1C70C20DEB9150093EAB4 /* NavigationBar.swift */,
-				F0C1C70D20DEB9150093EAB4 /* NavigationController.swift */,
+				F0C1C70B20DEB9150093EAB4 /* HiddenNavigationBarViewController.swift */,
+				F0C1C70C20DEB9150093EAB4 /* HiddenNavigationBar.swift */,
+				F0C1C70D20DEB9150093EAB4 /* HiddenNavigationController.swift */,
 			);
 			path = HidesNavigationBarWhenPushed;
 			sourceTree = SOURCE_ROOT;
@@ -152,11 +152,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0C1C70E20DEB9150093EAB4 /* ViewController.swift in Sources */,
+				F0C1C70E20DEB9150093EAB4 /* HiddenNavigationBarViewController.swift in Sources */,
 				F02ED5CF20DE6DB5003FCF86 /* AppDelegate.swift in Sources */,
-				F0C1C71020DEB9150093EAB4 /* NavigationController.swift in Sources */,
+				F0C1C71020DEB9150093EAB4 /* HiddenNavigationController.swift in Sources */,
 				F0EA62C120DE74480069B8F5 /* MainViewController.swift in Sources */,
-				F0C1C70F20DEB9150093EAB4 /* NavigationBar.swift in Sources */,
+				F0C1C70F20DEB9150093EAB4 /* HiddenNavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

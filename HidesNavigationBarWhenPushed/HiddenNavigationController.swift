@@ -20,7 +20,7 @@
 
 import UIKit
 
-open class NavigationController: UINavigationController {
+open class HiddenNavigationController: UINavigationController {
     
     // MARK: - Types
     
@@ -28,8 +28,8 @@ open class NavigationController: UINavigationController {
     
     // MARK: - Vars
     
-    private var _navigationBar: NavigationBar {
-        return navigationBar as! NavigationBar
+    private var _navigationBar: HiddenNavigationBar {
+        return navigationBar as! HiddenNavigationBar
     }
     
     private var transitionCompletions = [UIViewController: TransitionCompletion]()
@@ -37,7 +37,7 @@ open class NavigationController: UINavigationController {
     // MARK: - Constructors
     
     init() {
-        super.init(navigationBarClass: NavigationBar.self, toolbarClass: nil)
+        super.init(navigationBarClass: HiddenNavigationBar.self, toolbarClass: nil)
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -47,7 +47,7 @@ open class NavigationController: UINavigationController {
     // MARK: -
     
     override init(rootViewController: UIViewController) {
-        super.init(navigationBarClass: NavigationBar.self, toolbarClass: nil)
+        super.init(navigationBarClass: HiddenNavigationBar.self, toolbarClass: nil)
         viewControllers = [rootViewController]
         commonInit()
     }
@@ -59,7 +59,7 @@ open class NavigationController: UINavigationController {
     
     private func commonInit() {
         delegate = self
-        if let viewController = viewControllers.first as? ViewController, viewController.hidesNavigationBarWhenPushed {
+        if let viewController = viewControllers.first as? HiddenNavigationBarViewController, viewController.hidesNavigationBarWhenPushed {
             forceHideNavigationBar()
         }
     }
@@ -69,8 +69,8 @@ open class NavigationController: UINavigationController {
     override open func pushViewController(_ viewController: UIViewController, animated: Bool) {
         let currentViewController = viewControllers.last
         
-        if let currentViewController = currentViewController as? ViewController,
-            let viewController = viewController as? ViewController,
+        if let currentViewController = currentViewController as? HiddenNavigationBarViewController,
+            let viewController = viewController as? HiddenNavigationBarViewController,
             isNavigationBarHidden == false {
             if currentViewController.hidesNavigationBarWhenPushed == false && viewController.hidesNavigationBarWhenPushed == true {
                 let fakeNavigationBar = addFakeNavigationBar(to: currentViewController)
@@ -96,8 +96,8 @@ open class NavigationController: UINavigationController {
     
     @discardableResult override open func popViewController(animated: Bool) -> UIViewController? {
         if viewControllers.count > 1 {
-            if let currentViewController = viewControllers.last as? ViewController,
-                let previousViewController = viewControllers[viewControllers.count - 2] as? ViewController {
+            if let currentViewController = viewControllers.last as? HiddenNavigationBarViewController,
+                let previousViewController = viewControllers[viewControllers.count - 2] as? HiddenNavigationBarViewController {
                 return pop(from: currentViewController, to: previousViewController, animated: animated)
             }
         }
@@ -106,15 +106,15 @@ open class NavigationController: UINavigationController {
     
     @discardableResult override open func popToRootViewController(animated: Bool) -> [UIViewController]? {
         if viewControllers.count > 1 {
-            if let currentViewController = viewControllers.last as? ViewController,
-                let previousViewController = viewControllers.first as? ViewController {
+            if let currentViewController = viewControllers.last as? HiddenNavigationBarViewController,
+                let previousViewController = viewControllers.first as? HiddenNavigationBarViewController {
                 return [pop(from: currentViewController, to: previousViewController, animated: animated)]
             }
         }
         return super.popToRootViewController(animated: animated)
     }
     
-    fileprivate func pop(from currentViewController: ViewController, to previousViewController: ViewController, animated: Bool) -> UIViewController {
+    fileprivate func pop(from currentViewController: HiddenNavigationBarViewController, to previousViewController: HiddenNavigationBarViewController, animated: Bool) -> UIViewController {
         if currentViewController.hidesNavigationBarWhenPushed == true && previousViewController.hidesNavigationBarWhenPushed == false {
             setTransitionCompletion(for: previousViewController) { [weak self] in
                 previousViewController.fakeNavigationBar?.removeFromSuperview()
@@ -137,7 +137,7 @@ open class NavigationController: UINavigationController {
     
     override open func setNavigationBarHidden(_ hidden: Bool, animated: Bool) {
         super.setNavigationBarHidden(hidden, animated: animated)
-        if let viewController = visibleViewController as? ViewController, viewController.hidesNavigationBarWhenPushed && hidden == false {
+        if let viewController = visibleViewController as? HiddenNavigationBarViewController, viewController.hidesNavigationBarWhenPushed && hidden == false {
             forceHideNavigationBar()
         }
     }
@@ -150,14 +150,14 @@ open class NavigationController: UINavigationController {
         _navigationBar.isBackgroundViewHidden = true
     }
     
-    private func addFakeNavigationBar(to viewController: ViewController) -> NavigationBar {
+    private func addFakeNavigationBar(to viewController: HiddenNavigationBarViewController) -> HiddenNavigationBar {
         let fakeNavigationBar = _navigationBar.copyNavigationBar()
         viewController.view.addSubview(fakeNavigationBar)
         layout(fakeNavigationBar: fakeNavigationBar, within: viewController)
         return fakeNavigationBar
     }
     
-    private func layout(fakeNavigationBar: NavigationBar, within viewController: UIViewController) {
+    private func layout(fakeNavigationBar: HiddenNavigationBar, within viewController: UIViewController) {
         var rect = navigationBar.frame
         rect = navigationBar.superview?.convert(rect, to: viewController.view) ?? rect
         fakeNavigationBar.frame = rect
@@ -167,7 +167,7 @@ open class NavigationController: UINavigationController {
 
 // MARK: - UINavigationControllerDelegate
 
-extension NavigationController: UINavigationControllerDelegate {
+extension HiddenNavigationController: UINavigationControllerDelegate {
     public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if let transitionCompletion = transitionCompletions[viewController] {
             transitionCompletion()

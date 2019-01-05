@@ -20,14 +20,14 @@
 
 import UIKit
 
-open class ViewController: UIViewController {
+open class HiddenNavigationBarViewController: UIViewController {
     
     // MARK: - Vars
     
     open var hidesNavigationBarWhenPushed = false
     var viewWillAppearNavigationBarUpdatesBlock: (() -> Void)?
     
-    var fakeNavigationBar: NavigationBar?
+    var fakeNavigationBar: HiddenNavigationBar?
     
     // MARK: - Lifecycle
     

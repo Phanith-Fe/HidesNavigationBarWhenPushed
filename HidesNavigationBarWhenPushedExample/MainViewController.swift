@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MainViewController: ViewController {
+final class MainViewController: HiddenNavigationBarViewController {
     
     // MARK: - Vars
     
